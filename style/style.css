@@ -233,8 +233,11 @@ footer {
     div [id="price"]{ 
       width: 50px; height: 50px; border: solid black 2px; 
     }
-  
-}
-p
-{
+  img [alt="Our Team"]{
+    float: left;
+    margin: 5px;
+  }
+  p{
+    text-align: justify;
+  }
 }
