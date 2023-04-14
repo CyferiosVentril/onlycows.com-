@@ -5,7 +5,30 @@
       <link rel="icon" type="image/x-icon" href="Images\ThetheCow.png">
         <link rel="stylesheet" type="text/css" href="style/style.css">
         <style>
-            
+            button[type="submit"] {
+                width: 150px;
+                height: 50px;
+            }
+            input[type="text"]{
+                width: 100%;
+            }
+            #subscribe-container {
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              padding: 20px;
+              box-sizing: border-box;
+              text-align: center;
+            }
+            button [type="submit"]{
+              font-size: 24px;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 4px;
+              background-color: #3b3b3b;
+              color: #fff;
+    cursor: pointer;
+  }
         </style>
     </head>
   <body>
@@ -33,26 +56,32 @@
         <h2>Subscription Details</h2>
         <form>
           <label for="price">Price</label>
-          <div id="price"></div><br>
+          <p>$</p><div id="price"></div><br>
 
           <h3>Payment Details</h3><br>
 
           <label for="payment-method">Payment Method</label>
-          <select id="payment-method" name="payment-method">
+          <select id="payment-method" name="payment-method" onchange="togglePaymentFields()">
             <option value="credit-card">Credit Card</option>
             <option value="paypal">PayPal</option>
           </select><br>
 
-          <label for="card-number">Card Number</label>
-          <input type="text" id="card-number" name="card-number"><br>
+          <div id="credit-card-fields">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number"><br>
 
-          <label for="expiration-date">Expiration Date</label>
-          <input type="text" id="expiration-date" name="expiration-date"><br>
+            <label for="expiration-date">Expiration Date</label>
+            <input type="text" id="expiration-date" name="expiration-date"><br>
 
-          <label for="security-code">Security Code</label>
-          <input type="text" id="security-code" name="security-code"><br>
-
+            <label for="security-code">Security Code</label>
+            <input type="text" id="security-code" name="security-code"><br>
+          </div>
+          <main>
+            <!-- ... -->
+            <div id="subscribe-container">
           <button type="submit">Subscribe</button>
+          </div>
+          </main>
         </form>
       </section>
     </main>
@@ -63,9 +92,21 @@
     </footer>
     <script>
       var priceBox = document.getElementById("price");
+
       function setPrice(price)
       {
         priceBox.innerHTML = price;
+      }
+
+      function togglePaymentFields() {
+        var paymentMethod = document.getElementById("payment-method").value;
+        var creditCardFields = document.getElementById("credit-card-fields");
+
+        if (paymentMethod === "paypal") {
+          creditCardFields.style.display = "none";
+        } else {
+          creditCardFields.style.display = "block";
+        }
       }
     </script>
   </body>
