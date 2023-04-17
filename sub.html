@@ -78,7 +78,7 @@
           <main>
             <!-- ... -->
             <div id="subscribe-container">
-          <button type="submit">Subscribe</button>
+              <button type = "submit" onclick = setTier()>Subscribe</button>
           </div>
           </main>
         </form>
@@ -95,6 +95,18 @@
       function setPrice(price)
       {
         priceBox.innerHTML = price;
+        if(price == 75)
+        {
+          localStorage.setItem("tier", 1)
+        }
+        else if(price == 150)
+        {
+          localStorage.setItem("tier", 2)
+        }
+        else if(price == 300)
+        {
+          localStorage.setItem("tier", 3)
+        }
       }
 
       function togglePaymentFields() {
@@ -103,10 +115,28 @@
 
         if (paymentMethod === "paypal") {
           creditCardFields.style.display = "none";
-        } else {
+        } 
+        else {
           creditCardFields.style.display = "block";
         }
       }
+
+      function setTier()
+      {
+        if(localStorage.getItem("tier") == 1)
+        {
+          localStorage.setItem("tierPurchased", 1);
+        }
+        if(localStorage.getItem("tier") == 2)
+        {
+          localStorage.setItem("tierPurchased", 2);
+        }
+        if(localStorage.getItem("tier") == 3)
+        {
+          localStorage.setItem("tierPurchased", 3);
+        }
+      }
+
     </script>
   </body>
 </html>
